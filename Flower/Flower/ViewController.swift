@@ -20,8 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        imgTitle.text=imageName[numImage]
-        imgView.image=UIImage(named: imageName[numImage])
+        displayImage(numImage: numImage)
     }
 
     @IBAction func btnPrev(_ sender: UIButton) {
@@ -29,8 +28,7 @@ class ViewController: UIViewController {
         if(numImage<0){
             numImage=imageName.count-1
         }
-        imgTitle.text=imageName[numImage]
-        imgView.image=UIImage(named: imageName[numImage])
+        displayImage(numImage:numImage)
     }
     
     @IBAction func btnNext(_ sender: UIButton) {
@@ -38,6 +36,10 @@ class ViewController: UIViewController {
         if(numImage==imageName.count){
             numImage=0
         }
+        displayImage(numImage:numImage)
+    }
+    
+    func displayImage(numImage:Int){
         imgTitle.text=imageName[numImage]
         imgView.image=UIImage(named: imageName[numImage])
     }
