@@ -7,22 +7,20 @@
 
 import Foundation
 
-print("Hello, World!")
-
-
-func solution(_ arr:[Int]) -> [Int] {
-    var arr2=arr
-    if let first=arr.firstIndex(of: arr.min()!){
-        arr2.remove(at: first)
+func solution(_ absolutes:[Int], _ signs:[Bool]) -> Int {
+    var sum=0
+    
+    for i in 0..<absolutes.count{
+        if signs[i]{
+            sum+=absolutes[i]
+        }else{
+            sum-=absolutes[i]
+        }
     }
-    if arr2.count==0{
-        arr2.append(-1)
-    }
-    return arr2
+    
+    return sum
 }
 
-print(solution([6,5,1,3,4]))
-
-
+print(solution([4,7,12],[true,false,true]))
 
 

@@ -21,10 +21,14 @@ class TableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // selft.navigationItem.rightBarButtonItem = self.editButtonItem
         
         // Edit버튼을 만들고 삭제 기능 추가, 왼쪽으로 배치
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tvListView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -73,18 +77,26 @@ class TableViewController: UITableViewController {
         }    
     }
     
-    
+    // Delete를 삭제로 보이게
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "삭제"
     }
     
 
-    /*
+    // 목록 순서 바꾸기
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        let itemToMove = items[fromIndexPath.row]
+        let itemImageToMove = itemsImageFile[fromIndexPath.row]
+        
+        // 이동할 item을 삭제
+        items.remove(at: fromIndexPath.row)
+        itemsImageFile.remove(at: fromIndexPath.row)
+        
+        // 해당위치로 삽입
+        items.insert(itemToMove, at: to.row)
+        itemsImageFile.insert(itemImageToMove, at: to.row)
     }
-    */
 
     /*
     // Override to support conditional rearranging of the table view.
@@ -94,14 +106,21 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "sgDetail"{
+            let cell = sender as! UITableViewCell
+            let indexPath = self.tvListView.indexPath(for: cell)
+            
+            let detailView = segue.destination as! DetailViewController
+            detailView.receiveItems(items[indexPath!.row])
+        }
     }
-    */
+    
 
 }
