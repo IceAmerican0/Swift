@@ -145,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRe-h3-GO0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984" y="885"/>
+            <point key="canvasLocation" x="996" y="885"/>
         </scene>
         <!--Page Control View Controller-->
         <scene sceneID="Hhl-Wi-44D">
@@ -192,7 +192,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="tIM-ah-fP5"/>
-                        <segue destination="Yoo-4n-xK4" kind="relationship" relationship="viewControllers" id="yxM-c8-SR1"/>
                         <segue destination="Yl1-rz-ThI" kind="relationship" relationship="viewControllers" id="VVe-j9-rLA"/>
                         <segue destination="ZId-BU-7XK" kind="relationship" relationship="viewControllers" id="HQa-gQ-tLf"/>
                     </connections>

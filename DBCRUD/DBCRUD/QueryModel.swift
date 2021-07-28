@@ -1,19 +1,19 @@
 //
-//  JsonModel.swift
-//  ServerJson_01
+//  QueryModel.swift
+//  DBCRUD
 //
-//  Created by 박성준 on 2021/07/27.
+//  Created by 박성준 on 2021/07/28.
 //
 
 import Foundation
 
-protocol JsonModelProtocol : AnyObject {
+protocol QueryModelProtocol : AnyObject {
     func itemDownloaded(items: NSArray)
 }
 
-class JsonModel: NSObject{
-    var delegate: JsonModelProtocol!
-    let urlPath = "http://192.168.35.169:8080/ios/student.json"
+class QueryModel: NSObject{
+    var delegate: QueryModelProtocol!
+    let urlPath = "http://192.168.103.42:8080/ios/student_query_ios.jsp"
     
     func downloadItems(){
         let url: URL = URL(string: urlPath)!
